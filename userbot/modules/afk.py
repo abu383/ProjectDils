@@ -97,7 +97,7 @@ async def mention_afk(mention):
             if USERS[mention.sender_id] % randint(2, 4) == 0:
                 if AFKREASON:
                     await mention.reply(
-                        "I'm AFK right now."
+                        "SAYA SEDANG AFK SEKARANG."
                         f"\nBecause `{AFKREASON}`."
                         f"\nAFK since: {afk_str}"
                     )
@@ -158,7 +158,7 @@ async def afk_on_pm(sender):
                 afk_str = f"`{int(seconds)}s` ago"
             if sender.sender_id not in USERS:
                 if AFKREASON:
-                    await sender.reply("I'm AFK right now."
+                    await sender.reply("SAYA SEDANG AFK."
                                        f"\nReason: `{AFKREASON}`."
                                        f"\nAFK since: {afk_str}")
                 else:
@@ -168,7 +168,7 @@ async def afk_on_pm(sender):
             elif apprv:
                 if USERS[sender.sender_id] % randint(2, 4) == 0:
                     if AFKREASON:
-                        await sender.reply("I'm still AFK."
+                        await sender.reply("SAYA SESANG AFK."
                                            f"\nReason: `{AFKREASON}`."
                                            f"\nAFK from: {afk_str}")
                     else:
@@ -193,12 +193,12 @@ async def set_afk(afk_e):
     afk_start = start1.replace(microsecond=0)
     if string:
         AFKREASON = string
-        await afk_e.edit("Going AFK!"
+        await afk_e.edit("SEDANG AFK!"
                          f"\nReason: `{string}`")
     else:
-        await afk_e.edit("Going AFK!")
+        await afk_e.edit("IZIN AFK BOSS!")
     if BOTLOG:
-        await afk_e.client.send_message(BOTLOG_CHATID, "#AFK\nYou went AFK!")
+        await afk_e.client.send_message(BOTLOG_CHATID, "#AFK\KAMU PERGI AFK!")
     ISAFK = True
     afk_time = datetime.now()
     raise StopPropagation
@@ -218,7 +218,7 @@ async def type_afk_is_not_true(notafk):
     afk_end = not_afk.replace(microsecond=0)
     if ISAFK:
         ISAFK = False
-        msg = await notafk.respond("I'm no longer AFK.")
+        msg = await notafk.respond("SAYA SUDAH BANGKIT.")
         await sleep(2)
         await msg.delete()
         if BOTLOG:
