@@ -16,12 +16,10 @@ from userbot.events import register
 
 # ========================= CONSTANTS ============================
 AFKSTR = [
-    "I'm busy right now. Please talk in a bag and when I come back you can just give me the bag!",
-    "I'm away right now. If you need anything, leave a message after the beep:\n`beeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeep`!",
-    "You missed me, next time aim better.",
-    "I'll be back in a few minutes and if I'm not...,\nwait longer.",
-    "I'm not here right now, so I'm probably somewhere else.",
-    "Roses are red,\nViolets are blue,\nLeave me a message,\nAnd I'll get back to you.",
+    "Aku sedang sibuk sekarang. Tolong bicara di dalam tas dan ketika aku kembali kamu bisa memberikanku tas itu!", "Aku sedang pergi sekarang. Jika kau butuh sesuatu, tinggalkan pesan setelah bunyi bip: \ n`beeeeeeeeeeeeeeeeeeeeeeeeeeeeeeep`!", "Kamu merindukanku, lain kali bidik lebih baik.",
+    "Aku akan kembali dalam beberapa menit dan jika tidak ..., \ nmenunggu lebih lama.",
+    "Saya tidak di sini sekarang, jadi saya mungkin di tempat lain.",
+    "Mawar itu merah, \ nBiola itu biru, \ nTinggalkan aku pesan, \ nDan aku akan menghubungi kamu kembali.",
     "Sometimes the best things in life are worth waiting for…\nI'll be right back.",
     "I'll be right back,\nbut if I'm not right back,\nI'll be back later.",
     "If you haven't figured it out already,\nI'm not here.",
@@ -87,9 +85,9 @@ async def mention_afk(mention):
             afk_str = f"`{int(seconds)}s` ago"
         if mention.sender_id not in USERS:
             if AFKREASON:
-                await mention.reply("I'm AFK right now."
-                                    f"\nBecause `{AFKREASON}`."
-                                    f"\nAFK since: {afk_str}")
+                await mention.reply("Saya AFK sekarang."
+                                    f"\nKarena `{AFKREASON}`."
+                                    f"\nAFK sejak: {afk_str}")
             else:
                 await mention.reply(str(choice(AFKSTR)))
             USERS.update({mention.sender_id: 1})
@@ -97,9 +95,9 @@ async def mention_afk(mention):
             if USERS[mention.sender_id] % randint(2, 4) == 0:
                 if AFKREASON:
                     await mention.reply(
-                        "I'm AFK right now."
-                        f"\nBecause `{AFKREASON}`."
-                        f"\nAFK since: {afk_str}"
+                        "Saya AFK sekarang."
+                        f"\nKarena `{AFKREASON}`."
+                        f"\nAFK sejak: {afk_str}"
                     )
                 else:
                     await mention.reply(str(choice(AFKSTR)))
@@ -158,9 +156,9 @@ async def afk_on_pm(sender):
                 afk_str = f"`{int(seconds)}s` ago"
             if sender.sender_id not in USERS:
                 if AFKREASON:
-                    await sender.reply("I'm AFK right now."
-                                       f"\nReason: `{AFKREASON}`."
-                                       f"\nAFK since: {afk_str}")
+                    await sender.reply("Saya AFK sekarang."
+                                       f"\nAlasan: `{AFKREASON}`."
+                                       f"\nAFK sejak: {afk_str}")
                 else:
                     await sender.reply(str(choice(AFKSTR)))
                 USERS.update({sender.sender_id: 1})
@@ -168,8 +166,8 @@ async def afk_on_pm(sender):
             elif apprv:
                 if USERS[sender.sender_id] % randint(2, 4) == 0:
                     if AFKREASON:
-                        await sender.reply("SAYA SESANG AFK."
-                                           f"\nReason: `{AFKREASON}`."
+                        await sender.reply("SAYA SEdANG AFK."
+                                           f"\nAlasan: `{AFKREASON}`."
                                            f"\nAFK from: {afk_str}")
                     else:
                         await sender.reply(str(choice(AFKSTR)))
